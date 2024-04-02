@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import "./Home.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Students from "./Students";
+
 import { Button } from "@mui/material";
 import { PersonAddAlt } from "@mui/icons-material";
+import Teacher from "./Teacher";
 
 // import { useDarkMode } from "./DarkMode";
 
@@ -118,7 +119,7 @@ const HomeTeacher = () => {
             <span>Action</span>
           </div>
           <div className="body_data">
-            <Students
+            <Teacher
               students={filteredStudents}
               showModal={showModal}
               setShowModal={setShowModal}
