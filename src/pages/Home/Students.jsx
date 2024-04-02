@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { PersonRemove } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 const Students = (props) => {
@@ -30,7 +31,7 @@ const Students = (props) => {
                   className="btn22"
                   onClick={() => handleDeleteStudent(student.id)}
                 >
-                  Delete
+                 <PersonRemove/>
                 </button>
               </span>
             </div>

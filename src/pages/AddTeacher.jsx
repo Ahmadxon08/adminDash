@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { GroupAdd, KeyboardBackspace } from "@mui/icons-material";
-const Add = () => {
+const AddTeacher = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -19,7 +19,7 @@ const Add = () => {
       formData.age.length <= 2
     ) {
       try {
-        await axios.post("http://localhost:3000/students", formData);
+        await axios.post("http://localhost:3000/teacher", formData);
       } catch (error) {
         console.log(error.message, "hatolik bor");
       }
@@ -41,12 +41,12 @@ const Add = () => {
     <div className="add">
       <div className="container">
         <div className="add_head">
-          <Link to="/student">
+          <Link to="/teacher">
             <Button color="success" variant="contained">
               <KeyboardBackspace sx={{ fontSize: "35px" }} />
             </Button>
           </Link>
-          <span>Add student</span>
+          <span>Add Teacher</span>
         </div>
         <div className="add_body">
           <div className="add_info">
@@ -106,9 +106,9 @@ const Add = () => {
                 required={formData.group}
               >
                 <option value="All">All</option>
-                <option value="N45">N45</option>
-                <option value="N50">N50</option>
-                <option value="N38">N38</option>
+                <option value="junior">Junior</option>
+                <option value="middle">Middle</option>
+                <option value="senior">Senior</option>
               </select>
             </div>
           </div>
@@ -125,4 +125,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default AddTeacher;

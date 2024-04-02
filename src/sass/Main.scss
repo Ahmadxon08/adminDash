@@ -5,13 +5,21 @@
 }
 .app {
   display: flex;
-  
   width: 100vw;
   height: 100vh;
+
+  .appPage {
+    display: flex;
+    flex-direction: column;
+  }
+}
+a {
+  color: #fff;
+  text-decoration: none;
 }
 
 .container {
   margin: 0 auto;
   padding: 0 20px;
-  width: 1320px;
+  width: 1280px;
 }

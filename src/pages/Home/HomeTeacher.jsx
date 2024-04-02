@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import "./Home.scss";
 import { useEffect, useState } from "react";
@@ -8,7 +9,7 @@ import { PersonAddAlt } from "@mui/icons-material";
 
 // import { useDarkMode } from "./DarkMode";
 
-const Home = () => {
+const HomeTeacher = () => {
   const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
@@ -30,7 +31,7 @@ const Home = () => {
 
   const fetchStudent = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/students");
+      const res = await axios.get("http://localhost:3000/teacher");
       setStudents(res.data);
     } catch (error) {
       console.log(error.message);
@@ -39,7 +40,7 @@ const Home = () => {
 
   const deleteStudent = async () => {
     try {
-      await axios.delete(`http://localhost:3000/students/${selectedId}`);
+      await axios.delete(`http://localhost:3000/teacher/${selectedId}`);
       fetchStudent();
       setShowModal(false);
     } catch (error) {
@@ -76,7 +77,7 @@ const Home = () => {
     <div className="home">
       <div className="container">
         <div className="home_head">
-          <span>Student info</span>
+          <span>Teachers' info</span>
           <div className="texts_act">
             <input
               type="search"
@@ -86,20 +87,16 @@ const Home = () => {
             />
             <select value={filterGroup} onChange={handleFilterChange}>
               <option value="All">All</option>
-              <option value="N45">N45</option>
-              <option value="N50">N50</option>
-              <option value="N38">N38</option>
+              <option value="junior">Junior</option>
+              <option value="middle">Middle</option>
+              <option value="senior">Senior</option>
             </select>
           </div>
           <div className="btn">
-            <Link to="/add">
-              <Button
-                color="success"
-                variant="contained"
-              >
+            <Link to="/addTeacher">
+              <Button color="success" variant="contained">
                 <PersonAddAlt
                   sx={{
-                    
                     fontSize: "40px",
                     width: "50px",
                   }}
@@ -113,7 +110,7 @@ const Home = () => {
         </div>
         <div className="home_body">
           <div className="body_head">
-            <span className="id">Students ({filteredStudents.length})</span>
+            <span className="id">Teacher ({filteredStudents.length})</span>
             <span>FirstName</span>
             <span>LastName</span>
             <span>Age</span>
@@ -135,4 +132,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeTeacher;

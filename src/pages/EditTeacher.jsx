@@ -5,7 +5,7 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import { KeyboardBackspace } from "@mui/icons-material";
 
-const Edit = () => {
+const EditTeacher = () => {
   const { id } = useParams();
   const [editData, setEditData] = useState({
     firstName: "",
@@ -50,12 +50,12 @@ const Edit = () => {
     <div className="add">
       <div className="container">
         <div className="add_head">
-          <Link to="/student">
+        <Link to="/teacher">
             <Button color="success" variant="contained">
               <KeyboardBackspace sx={{ fontSize: "35px" }} />
             </Button>
           </Link>
-          <span>Edit student</span>
+          <span>Edit Teacher</span>
         </div>
         <div className="add_body">
           <div className="add_info">
@@ -111,4 +111,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default EditTeacher;

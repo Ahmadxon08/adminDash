@@ -1,8 +1,8 @@
 .add {
   display: flex;
-  background-color: antiquewhite;
+
   height: 100vh;
-  margin-top: 60px;
+
   .add_head {
     display: flex;
     align-items: center;
@@ -18,20 +18,20 @@
       color: #000000;
       text-align: center;
     }
-    a {
-      padding: 6px 18px;
-      font-size: 24px;
-      background-color: rgba(68, 87, 70, 0.377);
-      font-family: Roboto;
-      color: #000000;
-      font-weight: 700;
-      border-radius: 16px;
-      transition: all 0.3s;
-    }
-    a:active {
-      transform: scale(0.96);
-      background-color: rgba(68, 87, 70, 0.228);
-    }
+    // a {
+    //   padding: 6px 18px;
+    //   font-size: 24px;
+    //   background-color: rgba(68, 87, 70, 0.377);
+    //   font-family: Roboto;
+    //   color: #000000;
+    //   font-weight: 700;
+    //   border-radius: 16px;
+    //   transition: all 0.3s;
+    // }
+    // a:active {
+    //   transform: scale(0.96);
+    //   background-color: rgba(68, 87, 70, 0.228);
+    // }
   }
   .add_body {
     width: 100%;
@@ -65,7 +65,7 @@
           font-family: Roboto;
           margin: 0 auto;
           border: 0;
-          border-radius: 2px solid #483e3e;
+          border-radius: 2px solid #483e3e !important;
         }
         select {
           width: 10%;
@@ -147,20 +147,20 @@
       //     }
       //   }
       // }
-      a {
-        padding: 6px 18px;
-        font-size: 24px;
-        background-color: rgba(17, 143, 30, 0.927);
-        font-family: Roboto;
-        color: aliceblue;
-        font-weight: 700;
-        border-radius: 16px;
-        transition: all 0.3s;
-      }
-      a:active {
-        transform: scale(0.96);
-        background-color: rgba(17, 143, 30, 0.778);
-      }
+      // a {
+      //   padding: 6px 18px;
+      //   font-size: 24px;
+      //   background-color: rgba(17, 143, 30, 0.927);
+      //   font-family: Roboto;
+      //   color: aliceblue;
+      //   font-weight: 700;
+      //   border-radius: 16px;
+      //   transition: all 0.3s;
+      // }
+      // a:active {
+      //   transform: scale(0.96);
+      //   background-color: rgba(17, 143, 30, 0.778);
+      // }
     }
   }
 }
