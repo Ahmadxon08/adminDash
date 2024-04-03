@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./Add.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button } from "@mui/material";
+import { Button, MenuItem, TextField } from "@mui/material";
 import { KeyboardBackspace } from "@mui/icons-material";
 
 const EditTeacher = () => {
@@ -16,7 +16,7 @@ const EditTeacher = () => {
 
   const fetchStudent = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/students/${id}`);
+      const res = await axios.get(`http://localhost:3000/teacher/${id}`);
       setEditData(res.data);
       console.log(res.data);
     } catch (error) {
@@ -39,7 +39,7 @@ const EditTeacher = () => {
   const editStudent = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/students/${id}`, editData);
+      await axios.put(`http://localhost:3000/teachers/${id}`, editData);
       window.location.href = "/";
     } catch (error) {
       console.log(error.message, "hatolik bor");
@@ -50,7 +50,7 @@ const EditTeacher = () => {
     <div className="add">
       <div className="container">
         <div className="add_head">
-        <Link to="/teacher">
+          <Link to="/teacher">
             <Button color="success" variant="contained">
               <KeyboardBackspace sx={{ fontSize: "35px" }} />
             </Button>
@@ -59,50 +59,67 @@ const EditTeacher = () => {
         </div>
         <div className="add_body">
           <div className="add_info">
-            <div className="info">
-              <label htmlFor="firstName">FirstName</label>
-              <input
-                type="text"
-                value={editData.firstName}
+            <div className="input">
+              <TextField
+                label="First Name"
                 onChange={handleChange}
                 name="firstName"
+                type="text"
+                size="medium"
+                sx={{ width: "300px" }}
+                value={editData.firstName}
+                required
               />
             </div>
-            <div className="info">
-              <label htmlFor="lastName">LastName</label>
-              <input
+            <div className="input">
+              <TextField
                 type="text"
                 value={editData.lastName}
                 onChange={handleChange}
                 name="lastName"
+                size="medium"
+                required
+                label="Last Name"
+                sx={{ width: "300px" }}
               />
             </div>
-            <div className="info">
-              <label htmlFor="age">Age</label>
-              <input
+            <div className="input">
+              <TextField
                 type="number"
+                label="Age"
                 value={editData.age}
                 onChange={handleChange}
                 name="age"
+                size="medium"
+                sx={{ width: "300px" }}
+                required
               />
             </div>
-            <div className="info">
-              <label htmlFor="group">Group</label>
-              <select
-                name="group"
-                value={editData.group}
+
+            <div className="input">
+              <TextField
+                select
+                label="Level"
                 onChange={handleChange}
+                name="group"
+                size="medium"
+                value={editData.group}
+                sx={{ width: "300px" }}
+                required
+                id="group"
               >
-                <option value="All">All</option>
-                <option value="N45">N45</option>
-                <option value="N50">N50</option>
-                <option value="N38">N38</option>
-              </select>
+                <MenuItem value="All">All</MenuItem>
+                <MenuItem value="junior">Junior</MenuItem>
+                <MenuItem value="middle">Middle</MenuItem>
+                <MenuItem value="senior">Senior</MenuItem>
+              </TextField>
             </div>
           </div>
           <div className="btn">
-            <Link onClick={editStudent} to="/">
-              Save Student
+            <Link onClick={editStudent} to="/teacher">
+              <Button variant="contained" color="success">
+                Save Teacher
+              </Button>
             </Link>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Add.scss";
 import { useState } from "react";
 import axios from "axios";
-import { Button } from "@mui/material";
+import { Button, MenuItem, TextField } from "@mui/material";
 import { GroupAdd, KeyboardBackspace } from "@mui/icons-material";
 const Add = () => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const Add = () => {
     <div className="add">
       <div className="container">
         <div className="add_head">
-          <Link to="/student">
+          <Link to="/">
             <Button color="success" variant="contained">
               <KeyboardBackspace sx={{ fontSize: "35px" }} />
             </Button>
@@ -50,53 +50,65 @@ const Add = () => {
         </div>
         <div className="add_body">
           <div className="add_info">
-            <div className="info">
-              <label htmlFor="firstName">FirstName</label>
-              <input
+            <div className="input">
+              <TextField
+                label="First Name"
+                onChange={handleChange}
+                name="firstName"
                 type="text"
+                id="firstName"
+                size="medium"
+                sx={{ width: "300px" }}
                 value={formData.firstName}
-                onChange={handleChange}
-                name="firstName"
                 required
               />
-              {/* <TextField
-                label="FirstName"
-                name="firstName"
-                required
-                sx={{ margin: "0px", height:"20px" }}
-                variant="outlined"
-                onChange={handleChange}
-                value={formData.firstName}
-              />
-              <Stack>
-                <TextField
-                  id="standard-basic"
-                  label="Standard"
-                  variant="standard"
-                />
-              </Stack> */}
             </div>
-            <div className="info">
-              <label htmlFor="lastName">LastName</label>
-              <input
-                type="text"
-                value={formData.lastName}
+            <div className="input">
+              <TextField
+                label="Last Name"
                 onChange={handleChange}
                 name="lastName"
+                type="text"
+                size="medium"
+                sx={{ width: "300px" }}
+                value={formData.lastName}
                 required
+                id="lastName"
               />
             </div>
-            <div className="info">
-              <label htmlFor="age">Age</label>
-              <input
-                type="number"
-                value={formData.age}
+            <div className="input">
+              <TextField
+                label="Age"
                 onChange={handleChange}
                 name="age"
+                type="number"
+                size="medium"
+                sx={{ width: "300px" }}
+                value={formData.age}
                 required
+                id="age"
               />
             </div>
-            <div className="info">
+            <div className="input">
+              <TextField
+                select
+                label="Group"
+                onChange={handleChange}
+                name="group"
+                value={formData.group}
+                size="medium"
+                id="group"
+                sx={{ width: "300px" }}
+                required
+              >
+                <MenuItem value="All">All</MenuItem>
+                <MenuItem value="N45">N45</MenuItem>
+                <MenuItem value="N50">N50</MenuItem>
+                <MenuItem value="N38">N38</MenuItem>
+              </TextField>
+            </div>
+
+            {/* <div className="info">
               <label htmlFor="group">Group</label>
               <select
                 name="group"
@@ -106,11 +118,11 @@ const Add = () => {
                 required={formData.group}
               >
                 <option value="All">All</option>
-                <option value="N45">N45</option>
-                <option value="N50">N50</option>
-                <option value="N38">N38</option>
+                <option value="">N45</option>
+                <option value="">N50</option>
+                <option value="">N38</option>
               </select>
-            </div>
+            </div> */}
           </div>
           <div className="btn">
             <Link onClick={postStudent}>

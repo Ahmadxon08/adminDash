@@ -87,7 +87,7 @@ const HomeTeacher = () => {
               placeholder="Search..."
             />
             <select value={filterGroup} onChange={handleFilterChange}>
-              <option value="All">All</option>
+              <option value="All">Level</option>
               <option value="junior">Junior</option>
               <option value="middle">Middle</option>
               <option value="senior">Senior</option>
@@ -115,7 +115,7 @@ const HomeTeacher = () => {
             <span>FirstName</span>
             <span>LastName</span>
             <span>Age</span>
-            <span>Group</span>
+            <span>Level</span>
             <span>Action</span>
           </div>
           <div className="body_data">

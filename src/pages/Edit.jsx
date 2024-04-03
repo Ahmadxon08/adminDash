@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./Add.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button } from "@mui/material";
+import { Button, MenuItem, TextField } from "@mui/material";
 import { KeyboardBackspace } from "@mui/icons-material";
 
 const Edit = () => {
@@ -50,7 +50,7 @@ const Edit = () => {
     <div className="add">
       <div className="container">
         <div className="add_head">
-          <Link to="/student">
+          <Link to="/">
             <Button color="success" variant="contained">
               <KeyboardBackspace sx={{ fontSize: "35px" }} />
             </Button>
@@ -59,50 +59,69 @@ const Edit = () => {
         </div>
         <div className="add_body">
           <div className="add_info">
-            <div className="info">
-              <label htmlFor="firstName">FirstName</label>
-              <input
-                type="text"
-                value={editData.firstName}
+            <div className="input">
+              <TextField
+                label="First Name"
                 onChange={handleChange}
                 name="firstName"
+                type="text"
+                id="firstName"
+                size="medium"
+                sx={{ width: "300px" }}
+                value={editData.firstName}
+                required
               />
             </div>
-            <div className="info">
-              <label htmlFor="lastName">LastName</label>
-              <input
-                type="text"
-                value={editData.lastName}
+            <div className="input">
+              <TextField
+                label="Last Name"
                 onChange={handleChange}
                 name="lastName"
+                type="text"
+                size="medium"
+                sx={{ width: "300px" }}
+                value={editData.lastName}
+                required
+                id="lastName"
               />
             </div>
-            <div className="info">
-              <label htmlFor="age">Age</label>
-              <input
-                type="number"
-                value={editData.age}
+            <div className="input">
+              <TextField
+                label="Age"
                 onChange={handleChange}
                 name="age"
+                type="number"
+                size="medium"
+                sx={{ width: "300px" }}
+                value={editData.age}
+                required
+                id="age"
               />
             </div>
-            <div className="info">
-              <label htmlFor="group">Group</label>
-              <select
+            <div className="input">
+              <TextField
+                select
+                label="Group"
+                onChange={handleChange}
                 name="group"
                 value={editData.group}
-                onChange={handleChange}
+                size="medium"
+                id="group"
+                sx={{ width: "300px" }}
+                required
               >
-                <option value="All">All</option>
-                <option value="N45">N45</option>
-                <option value="N50">N50</option>
-                <option value="N38">N38</option>
-              </select>
+                <MenuItem value="All">All</MenuItem>
+                <MenuItem value="N45">N45</MenuItem>
+                <MenuItem value="N50">N50</MenuItem>
+                <MenuItem value="N38">N38</MenuItem>
+              </TextField>
             </div>
           </div>
           <div className="btn">
             <Link onClick={editStudent} to="/">
-              Save Student
+              <Button variant="contained" color="success">
+                Save Student
+              </Button>
             </Link>
           </div>
         </div>

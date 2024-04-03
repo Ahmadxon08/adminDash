@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { PersonRemove } from "@mui/icons-material";
+import { ManageAccounts, PersonRemove } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 const Teacher = (props) => {
@@ -24,7 +24,7 @@ const Teacher = (props) => {
               <span>{student.group}</span>
               <span className="btn0">
                 <Link className="btn11" to={`/teacher/${student.id}`}>
-                  Edit
+                <ManageAccounts />
                 </Link>
 
                 <button

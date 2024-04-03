@@ -1,6 +1,7 @@
-import {  useNavigate } from "react-router-dom";
-import { useAuth } from "../Auth";
+import { useNavigate } from "react-router-dom";
+
 import "./Profile.scss";
+import { useAuth } from "../components/Auth";
 
 const Profile = () => {
   const { user, logOut } = useAuth();
@@ -9,7 +10,6 @@ const Profile = () => {
   const handleLogOut = () => {
     logOut();
     navigate("/login");
-
   };
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   GridViewRounded,
   Logout,
@@ -8,10 +9,11 @@ import "./SideBar.scss";
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = (props) => {
+  const { toggle } = props;
   return (
     <div className="sideBar">
-      <div className="column">
+      <div className={`column ?${toggle}?"open":" " `}>
         <div className="menus">
           <div className="row">
             <Stack sx={{ color: "white" }}>
@@ -32,7 +34,7 @@ const SideBar = () => {
             </Link>
           </Stack>
           <Stack sx={{ color: "white" }}>
-            <Link to="/student">
+            <Link to="/">
               <div className="row">
                 <SwitchAccountRounded sx={{ width: "44px", height: "44px" }} />
                 <span>Students</span>

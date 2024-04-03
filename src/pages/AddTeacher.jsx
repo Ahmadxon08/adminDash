@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Add.scss";
 import { useState } from "react";
 import axios from "axios";
-import { Button } from "@mui/material";
+import { Button, MenuItem, TextField } from "@mui/material";
 import { GroupAdd, KeyboardBackspace } from "@mui/icons-material";
 const AddTeacher = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const AddTeacher = () => {
       } catch (error) {
         console.log(error.message, "hatolik bor");
       }
-      navigate("/");
+      navigate("/teacher");
     } else if (formData) {
       alert("Please field your information before 😜😜😜");
     }
@@ -50,66 +50,62 @@ const AddTeacher = () => {
         </div>
         <div className="add_body">
           <div className="add_info">
-            <div className="info">
-              <label htmlFor="firstName">FirstName</label>
-              <input
+            <div className="input">
+              <TextField
+                label="First Name"
+                onChange={handleChange}
+                name="firstName"
                 type="text"
+                size="medium"
+                sx={{ width: "300px" }}
                 value={formData.firstName}
-                onChange={handleChange}
-                name="firstName"
                 required
+                id="firstName"
               />
-              {/* <TextField
-                label="FirstName"
-                name="firstName"
-                required
-                sx={{ margin: "0px", height:"20px" }}
-                variant="outlined"
-                onChange={handleChange}
-                value={formData.firstName}
-              />
-              <Stack>
-                <TextField
-                  id="standard-basic"
-                  label="Standard"
-                  variant="standard"
-                />
-              </Stack> */}
             </div>
-            <div className="info">
-              <label htmlFor="lastName">LastName</label>
-              <input
-                type="text"
-                value={formData.lastName}
+            <div className="input">
+              <TextField
+                label="Last Name"
                 onChange={handleChange}
                 name="lastName"
+                type="text"
+                id="lastName"
+                size="medium"
+                sx={{ width: "300px" }}
+                value={formData.lastName}
                 required
               />
             </div>
-            <div className="info">
-              <label htmlFor="age">Age</label>
-              <input
-                type="number"
-                value={formData.age}
+            <div className="input">
+              <TextField
+                label="Age"
                 onChange={handleChange}
                 name="age"
+                type="number"
+                id="age"
+                size="medium"
+                sx={{ width: "300px" }}
+                value={formData.age}
                 required
               />
             </div>
-            <div className="info">
-              <label htmlFor="group">Group</label>
-              <select
-                name="group"
-                value={formData.group}
+            <div className="input">
+              <TextField
+                select
+                label="Level"
                 onChange={handleChange}
+                name="group"
+                size="medium"
+                value={formData.group}
+                sx={{ width: "300px" }}
+                required
                 id="group"
-                required={formData.group}
               >
-                <option value="All">All</option>
-                <option value="junior">Junior</option>
-                <option value="middle">Middle</option>
-                <option value="senior">Senior</option>
-              </select>
+                <MenuItem value="All">All</MenuItem>
+                <MenuItem value="junior">Junior</MenuItem>
+                <MenuItem value="middle">Middle</MenuItem>
+                <MenuItem value="senior">Senior</MenuItem>
+              </TextField>
             </div>
           </div>
           <div className="btn">
