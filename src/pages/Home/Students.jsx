@@ -15,9 +15,9 @@ const Students = (props) => {
     <>
       <div className="body_data">
         {students &&
-          students.map((student) => (
+          students.map((student , i) => (
             <div className="data_row" key={student.id}>
-              <span>{student.id}</span>
+              <span>{i+1}</span>
               <span>{student.firstName}</span>
               <span>{student.lastName}</span>
               <span>{student.age}</span>

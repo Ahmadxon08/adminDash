@@ -1,16 +1,30 @@
 import { useNavigate } from "react-router-dom";
 
 import "./Profile.scss";
-import { useAuth } from "../components/Auth";
+import { useEffect, useState } from "react";
+// import { useAuth } from "../components/Auth";
 
 const Profile = () => {
-  const { user, logOut } = useAuth();
+  // const { user, logOut } = useAuth();
+  const [ user , setUser] =useState ({
+    username: "",
+    password: "",
+  }) 
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    logOut();
     navigate("/login");
+    localStorage.removeItem('user')
+
   };
+
+  useEffect(()=>{
+    const user =  JSON.parse(localStorage.getItem('user'))
+    setUser({
+      username: user.username,
+      password: user.password,
+    })
+  } , [])
 
   return (
     <div className="profile">
@@ -20,8 +34,8 @@ const Profile = () => {
             <h1>User Information</h1>
           </div>
           <div className="profile_body">
-            <span>User Name: {user && user.username} </span>
-            <span>User Password:{user && user.password}</span>
+            <span>User Name: {user.username} </span>
+            <span>User Password: {user.password} </span>
           </div>
           <div className="btn">
             <button onClick={handleLogOut}>Log out</button>

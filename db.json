@@ -61,13 +61,6 @@
       "lastName": "",
       "group": "",
       "age": "All"
-    },
-    {
-      "id": "6838",
-      "firstName": "dcsx xx",
-      "lastName": "tetsgs",
-      "group": "N45",
-      "age": "23"
     }
   ],
   "teacher": [
@@ -106,13 +99,6 @@
       "age": "39",
       "job": " QUE",
       "username": "Star"
-    },
-    {
-      "id": "aaae",
-      "firstName": "Black",
-      "lastName": "Edison",
-      "group": "junior",
-      "age": "23"
     }
   ]
 }

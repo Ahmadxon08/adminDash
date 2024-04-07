@@ -48,15 +48,15 @@
         font-size: 24px;
         font-family: Roboto;
         border: 1px solid #000;
-        transition: all .3s;
+        transition: all 0.3s;
         color: #000;
         cursor: pointer;
         background-color: inherit;
         border-radius: 6px;
         &:active {
-            color: #fff;
-            transform:  scale(0.96);
-            background-color: #000;
+          color: #fff;
+          transform: scale(0.96);
+          background-color: #000;
         }
       }
     }

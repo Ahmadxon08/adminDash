@@ -26,12 +26,12 @@ const Header = (props) => {
             </Button>
           </div>
           {user ? (
-            <Link to="/profile" className="login">
+            <Link to="/teacher" className="login">
               <AccountCircle sx={{ fontSize: "40px" }} />
               <span>{user ? user.username : "Profile"}</span>
             </Link>
           ) : (
-            <Link to="/login" className="login">
+            <Link to={"/login"} className="login">
               <AccountCircle sx={{ fontSize: "40px" }} />
               <span>Login</span>
             </Link>

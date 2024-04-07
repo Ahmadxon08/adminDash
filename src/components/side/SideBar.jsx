@@ -9,11 +9,10 @@ import "./SideBar.scss";
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const SideBar = (props) => {
-  const { toggle } = props;
+const SideBar = ({ toogle }) => {
   return (
-    <div className="sideBar">
-      <div className={`column ?${toggle}?"open":" " `}>
+    <div className={`sideBar${toogle ? "open" : ""}`}>
+      <div className={`column `}>
         <div className="menus">
           <div className="row">
             <Stack sx={{ color: "white" }}>
