@@ -1,15 +1,6 @@
 {
   "students": [
     {
-      "id": "2",
-      "firstName": "Black",
-      "lastName": "Edison",
-      "group": "N50",
-      "age": "19",
-      "job": " QUE",
-      "username": "Star"
-    },
-    {
       "id": "3",
       "firstName": "Tom",
       "lastName": "Smith",
@@ -61,6 +52,13 @@
       "lastName": "",
       "group": "",
       "age": "All"
+    },
+    {
+      "id": "9db1",
+      "firstName": "Black",
+      "lastName": "Doe",
+      "group": "N38",
+      "age": "12"
     }
   ],
   "teacher": [
@@ -88,15 +86,6 @@
       "lastName": "Doe",
       "group": "middle",
       "age": "29",
-      "job": " QUE",
-      "username": "Star"
-    },
-    {
-      "id": "4",
-      "firstName": "Jeck",
-      "lastName": "Lio",
-      "group": "sanior",
-      "age": "39",
       "job": " QUE",
       "username": "Star"
     }

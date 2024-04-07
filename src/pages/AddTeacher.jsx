@@ -23,7 +23,7 @@ const AddTeacher = () => {
       } catch (error) {
         console.log(error.message, "hatolik bor");
       }
-      navigate("/teacher");
+      navigate("/");
     } else if (formData) {
       alert("Please field your information before 😜😜😜");
     }

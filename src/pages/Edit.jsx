@@ -40,7 +40,7 @@ const Edit = () => {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:3000/students/${id}`, editData);
-      window.location.href = "/";
+      window.location.href = "/students";
     } catch (error) {
       console.log(error.message, "hatolik bor");
     }
@@ -50,7 +50,7 @@ const Edit = () => {
     <div className="add">
       <div className="container">
         <div className="add_head">
-          <Link to="/">
+          <Link to="/students">
             <Button color="success" variant="contained">
               <KeyboardBackspace sx={{ fontSize: "35px" }} />
             </Button>
@@ -118,7 +118,7 @@ const Edit = () => {
             </div>
           </div>
           <div className="btn">
-            <Link onClick={editStudent} to="/">
+            <Link onClick={editStudent} to="/students">
               <Button variant="contained" color="success">
                 Save Student
               </Button>

@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "./Add.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -6,6 +6,7 @@ import { Button, MenuItem, TextField } from "@mui/material";
 import { KeyboardBackspace } from "@mui/icons-material";
 
 const EditTeacher = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [editData, setEditData] = useState({
     firstName: "",
@@ -40,7 +41,7 @@ const EditTeacher = () => {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:3000/teachers/${id}`, editData);
-      window.location.href = "/";
+      navigate("/");
     } catch (error) {
       console.log(error.message, "hatolik bor");
     }
@@ -50,7 +51,7 @@ const EditTeacher = () => {
     <div className="add">
       <div className="container">
         <div className="add_head">
-          <Link to="/teacher">
+          <Link to="/">
             <Button color="success" variant="contained">
               <KeyboardBackspace sx={{ fontSize: "35px" }} />
             </Button>
@@ -116,7 +117,7 @@ const EditTeacher = () => {
             </div>
           </div>
           <div className="btn">
-            <Link onClick={editStudent} to="/teacher">
+            <Link onClick={editStudent} to="/">
               <Button variant="contained" color="success">
                 Save Teacher
               </Button>

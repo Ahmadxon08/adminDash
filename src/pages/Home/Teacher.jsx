@@ -15,16 +15,16 @@ const Teacher = (props) => {
     <>
       <div className="body_data">
         {students &&
-          students.map((student) => (
+          students.map((student, i) => (
             <div className="data_row" key={student.id}>
-              <span>{student.id}</span>
+              <span>{i+1}</span>
               <span>{student.firstName}</span>
               <span>{student.lastName}</span>
               <span>{student.age}</span>
               <span>{student.group}</span>
               <span className="btn0">
                 <Link className="btn11" to={`/teacher/${student.id}`}>
-                <ManageAccounts />
+                  <ManageAccounts />
                 </Link>
 
                 <button

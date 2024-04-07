@@ -38,10 +38,10 @@ const Router = () => {
         <Route path="/" element={<SiteBar />}>
           <Route index element={<HomeTeacher />} />
           <Route path="/students" element={<Home />} />
-          <Route path="/edit" element={<Edit />} />
+          <Route path="/edit/:id" element={<Edit />} />
           <Route path="/add" element={<Add />} />
           <Route path="/addteacher" element={<AddTeacher />} />
-          <Route path="/editteacher" element={<EditTeacher />} />
+          <Route path="/teacher/:id" element={<EditTeacher />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
