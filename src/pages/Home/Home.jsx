@@ -9,6 +9,7 @@ import { PersonAddAlt } from "@mui/icons-material";
 // import { useDarkMode } from "./DarkMode";
 
 const Home = () => {
+  const [loading, setLoading] = useState(false);
   const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
@@ -29,11 +30,14 @@ const Home = () => {
   // }, [currentPage])
 
   const fetchStudent = async () => {
+    setLoading(true);
     try {
       const res = await axios.get("http://localhost:3000/students");
       setStudents(res.data);
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,65 +77,72 @@ const Home = () => {
   ///////////////////////////////////////////////////
 
   return (
-    <div className="home">
-      <div className="container">
-        <div className="home_head">
-          <span>Student info</span>
-          <div className="texts_act">
-            <input
-              type="search"
-              value={searchTerm}
-              onChange={handleSearchTermChange}
-              placeholder="Search..."
-            />
-            <select value={filterGroup} onChange={handleFilterChange}>
-              <option value="All">All</option>
-              <option value="N45">N45</option>
-              <option value="N50">N50</option>
-              <option value="N38">N38</option>
-            </select>
+    <>
+      {loading ? (
+        <div className="loading">
+          <div className="lds-ripple">
+            <div></div>
+            <div></div>
           </div>
-          <div className="btn">
-            <Link to="/add">
-              <Button
-                color="success"
-                variant="contained"
-              >
-                <PersonAddAlt
-                  sx={{
-                    
-                    fontSize: "40px",
-                    width: "50px",
-                  }}
+        </div>
+      ) : (
+        <div className="home">
+          <div className="container">
+            <div className="home_head">
+              <span>Student info</span>
+              <div className="texts_act">
+                <input
+                  type="search"
+                  value={searchTerm}
+                  onChange={handleSearchTermChange}
+                  placeholder="Search..."
                 />
-              </Button>
-            </Link>
-          </div>
-          {/* <div className="btnMode">
+                <select value={filterGroup} onChange={handleFilterChange}>
+                  <option value="All">All</option>
+                  <option value="N45">N45</option>
+                  <option value="N50">N50</option>
+                  <option value="N38">N38</option>
+                </select>
+              </div>
+              <div className="btn">
+                <Link to="/add">
+                  <Button color="success" variant="contained">
+                    <PersonAddAlt
+                      sx={{
+                        fontSize: "40px",
+                        width: "50px",
+                      }}
+                    />
+                  </Button>
+                </Link>
+              </div>
+              {/* <div className="btnMode">
             <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
           </div> */}
-        </div>
-        <div className="home_body">
-          <div className="body_head">
-            <span className="id">Students ({filteredStudents.length})</span>
-            <span>FirstName</span>
-            <span>LastName</span>
-            <span>Age</span>
-            <span>Group</span>
-            <span>Action</span>
+            </div>
+            <div className="home_body">
+              <div className="body_head">
+                <span className="id">Students ({filteredStudents.length})</span>
+                <span>FirstName</span>
+                <span>LastName</span>
+                <span>Age</span>
+                <span>Group</span>
+                <span>Action</span>
+              </div>
+              <div className="body_data">
+                <Students
+                  students={filteredStudents}
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                  setSelectedId={setSelectedId}
+                  deleteStudent={deleteStudent}
+                />
+              </div>
+            </div>
           </div>
-          <div className="body_data">
-            <Students
-              students={filteredStudents}
-              showModal={showModal}
-              setShowModal={setShowModal}
-              setSelectedId={setSelectedId}
-              deleteStudent={deleteStudent}
-            />
-          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
