@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import "./Home.scss";
@@ -7,39 +8,35 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import { PersonAddAlt } from "@mui/icons-material";
 import Teacher from "./Teacher";
+import { useDispatch, useSelector } from "react-redux";
+
+// import {,} from "react-redux"
+import { fetchUsers } from "../../components/users/userActions";
 
 // import { useDarkMode } from "./DarkMode";
 
 const HomeTeacher = () => {
-  const [loading, setLoading] = useState(false);
-  const [students, setStudents] = useState([]);
+  const { loading, users } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+  const [students, setStudents] = useState(users);
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterGroup, setFilterGroup] = useState("All");
 
-  const fetchStudent = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.get("http://localhost:3000/teacher");
-      setStudents(res.data);
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
 
+ 
   const deleteStudent = async () => {
-    setLoading(true);
     try {
       await axios.delete(`http://localhost:3000/teacher/${selectedId}`);
-      fetchStudent();
+      fetchUsers();
       setShowModal(false);
     } catch (error) {
       console.log(error.message);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -61,10 +58,6 @@ const HomeTeacher = () => {
       (student.group && student.group.toLowerCase().includes(searchTerm));
     return isInGroup && matchedStudent;
   });
-
-  useEffect(() => {
-    fetchStudent();
-  }, []);
 
   ///////////////////////////////////////////////////
 

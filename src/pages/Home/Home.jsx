@@ -6,8 +6,6 @@ import Students from "./Students";
 import { Button } from "@mui/material";
 import { PersonAddAlt } from "@mui/icons-material";
 
-// import { useDarkMode } from "./DarkMode";
-
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [students, setStudents] = useState([]);
@@ -15,6 +13,7 @@ const Home = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterGroup, setFilterGroup] = useState("All");
+
   // const [cuurentPage, setCurentPage] = useState(1);
   // const [totalPages, setTotalPages] = useState(1);
 
@@ -33,6 +32,7 @@ const Home = () => {
     setLoading(true);
     try {
       const res = await axios.get("http://localhost:3000/students");
+
       setStudents(res.data);
     } catch (error) {
       console.log(error.message);
@@ -40,6 +40,9 @@ const Home = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    fetchStudent();
+  }, []);
 
   const deleteStudent = async () => {
     try {
@@ -69,10 +72,6 @@ const Home = () => {
       (student.group && student.group.toLowerCase().includes(searchTerm));
     return isInGroup && matchedStudent;
   });
-
-  useEffect(() => {
-    fetchStudent();
-  }, []);
 
   ///////////////////////////////////////////////////
 

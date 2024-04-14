@@ -1,15 +1,6 @@
 {
   "students": [
     {
-      "id": "3",
-      "firstName": "Tom",
-      "lastName": "Smith",
-      "group": "N50",
-      "age": 17,
-      "job": " NEXT JS",
-      "username": "Cumbersom"
-    },
-    {
       "id": "4",
       "firstName": "John",
       "lastName": "Doe",
@@ -73,6 +64,34 @@
       "lastName": "Edison",
       "group": "N50",
       "age": 333
+    },
+    {
+      "id": "89fa",
+      "firstName": "Black",
+      "lastName": "tetsgs",
+      "group": "N50",
+      "age": 22
+    },
+    {
+      "id": "521e",
+      "firstName": "Black",
+      "lastName": "Edison",
+      "group": "N38",
+      "age": 21
+    },
+    {
+      "id": "cd3a",
+      "firstName": "Black",
+      "lastName": "tetsgs",
+      "group": "N45",
+      "age": 21
+    },
+    {
+      "id": "f488",
+      "firstName": "dcsx xx",
+      "lastName": "tetsgs",
+      "group": "N50",
+      "age": 22
     }
   ],
   "teacher": [
