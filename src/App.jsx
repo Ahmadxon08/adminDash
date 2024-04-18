@@ -1,4 +1,5 @@
-import store from "./components/store";
+// import store from "./components/store/
+import store from "./app/store";
 import Router from "./router/router";
 
 

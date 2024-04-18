@@ -85,13 +85,6 @@
       "lastName": "tetsgs",
       "group": "N45",
       "age": 21
-    },
-    {
-      "id": "f488",
-      "firstName": "dcsx xx",
-      "lastName": "tetsgs",
-      "group": "N50",
-      "age": 22
     }
   ],
   "teacher": [
@@ -2277,13 +2270,6 @@
       "firstName": "Black",
       "lastName": "tetsgs",
       "group": "junior",
-      "age": 22
-    },
-    {
-      "id": "1e22",
-      "firstName": "Black",
-      "lastName": "tetsgs",
-      "group": "middle",
       "age": 22
     }
   ]

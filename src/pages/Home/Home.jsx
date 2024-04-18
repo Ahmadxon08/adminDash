@@ -5,10 +5,15 @@ import axios from "axios";
 import Students from "./Students";
 import { Button } from "@mui/material";
 import { PersonAddAlt } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchStudent } from "./../../app/student/studentSlice";
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
-  const [students, setStudents] = useState([]);
+  const dispatch = useDispatch();
+  const { loading, students } = useSelector((state) => state.student);
+
+  // const [loadingg, setLoading] = useState(loading);
+  // const [student, setStudents] = useState(students);
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,21 +33,21 @@ const Home = () => {
   //   fetchUsers();
   // }, [currentPage])
 
-  const fetchStudent = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.get("http://localhost:3000/students");
+  // const fetchStudent = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const res = await axios.get("http://localhost:3000/students");
 
-      setStudents(res.data);
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     setStudents(res.data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   useEffect(() => {
-    fetchStudent();
-  }, []);
+    dispatch(fetchStudent());
+  }, [dispatch]);
 
   const deleteStudent = async () => {
     try {

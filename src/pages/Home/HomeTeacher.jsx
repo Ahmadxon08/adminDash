@@ -9,31 +9,31 @@ import { Button } from "@mui/material";
 import { PersonAddAlt } from "@mui/icons-material";
 import Teacher from "./Teacher";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchTeacher } from "../../app/teacher/teacherSlice";
 
 // import {,} from "react-redux"
-import { fetchUsers } from "../../components/users/userActions";
 
 // import { useDarkMode } from "./DarkMode";
 
 const HomeTeacher = () => {
-  const { loading, users } = useSelector((state) => state.userReducer);
+  const { loading, error, teachers } = useSelector((state) => state.teacher);
+
   const dispatch = useDispatch();
 
-  const [students, setStudents] = useState(users);
+  const [students, setStudents] = useState(teachers);
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterGroup, setFilterGroup] = useState("All");
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(fetchTeacher());
   }, [dispatch]);
 
- 
   const deleteStudent = async () => {
     try {
       await axios.delete(`http://localhost:3000/teacher/${selectedId}`);
-      fetchUsers();
+      fetchTeacher();
       setShowModal(false);
     } catch (error) {
       console.log(error.message);
@@ -63,6 +63,7 @@ const HomeTeacher = () => {
 
   return (
     <>
+      {error && <h1>{error.message}</h1>}
       {loading ? (
         <div className="loading">
           <div className="lds-ripple">
