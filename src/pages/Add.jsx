@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Add.scss";
-import axios from "axios";
+
 import { Button, MenuItem, TextField } from "@mui/material";
 import { GroupAdd, KeyboardBackspace } from "@mui/icons-material";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { addStudent } from "../app/student/studentSlice";
 
 const Add = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -13,7 +16,7 @@ const Add = () => {
       firstName: "",
       lastName: "",
       group: "",
-      age: "All",
+      age: "",
     },
     validate: (values) => {
       const errors = {};
@@ -31,17 +34,9 @@ const Add = () => {
       }
       return errors;
     },
-    onSubmit: async (values) => {
-      if (values.firstName.length > 3 && values.lastName.length > 0) {
-        try {
-          await axios.post("http://localhost:3000/students", values);
-          navigate("/students"); 
-        } catch (error) {
-          console.log(error.message, "hatolik bor");
-        }
-      } else {
-        alert("Please field your information before 😜😜😜");
-      }
+    onSubmit: (values) => {
+      navigate("/students");
+      dispatch(addStudent(values));
     },
   });
 

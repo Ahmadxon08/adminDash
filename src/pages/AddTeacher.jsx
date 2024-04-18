@@ -1,11 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Add.scss";
 // import { useState } from "react";
-import axios from "axios";
+
 import { Button, MenuItem, TextField } from "@mui/material";
 import { GroupAdd, KeyboardBackspace } from "@mui/icons-material";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+
+import { addTeacher } from "../app/teacher/teacherSlice";
 const AddTeacher = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -30,18 +34,9 @@ const AddTeacher = () => {
       }
       return errors;
     },
-    onSubmit: async (values) => {
-      if (values.firstName.length > 3 && values.lastName.length > 0) {
-        try {
-          await axios.post("http://localhost:3000/teacher", values);
-
-          navigate("/");
-        } catch (error) {
-          console.log(error.message, "hatolik bor");
-        }
-      } else {
-        alert("Please fill in your information before 😜😜😜");
-      }
+    onSubmit: (values) => {
+      navigate("/");
+      dispatch(addTeacher(values));
     },
   });
 

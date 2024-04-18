@@ -51,7 +51,7 @@ const Home = () => {
 
   const deleteStudent = async () => {
     try {
-      await axios.delete(`http://localhost:3000/students/${selectedId}`);
+      await axios.delete(`http://localhost:4000/students/${selectedId}`);
       fetchStudent();
       setShowModal(false);
     } catch (error) {

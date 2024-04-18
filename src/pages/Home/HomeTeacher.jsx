@@ -1,28 +1,16 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
-import "./Home.scss";
-import { useEffect, useState } from "react";
-import axios from "axios";
-
 import { Button } from "@mui/material";
 import { PersonAddAlt } from "@mui/icons-material";
-import Teacher from "./Teacher";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTeacher } from "../../app/teacher/teacherSlice";
-
-// import {,} from "react-redux"
-
-// import { useDarkMode } from "./DarkMode";
+import Teacher from "./Teacher";
 
 const HomeTeacher = () => {
-  const { loading, error, teachers } = useSelector((state) => state.teacher);
-
+  const { error, teachers, loading } = useSelector((state) => state.teacher);
   const dispatch = useDispatch();
-
-  const [students, setStudents] = useState(teachers);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
+  const [students, setStudents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterGroup, setFilterGroup] = useState("All");
 
@@ -30,13 +18,18 @@ const HomeTeacher = () => {
     dispatch(fetchTeacher());
   }, [dispatch]);
 
-  const deleteStudent = async () => {
+  useEffect(() => {
+    if (Array.isArray(teachers)) {
+      setStudents(teachers);
+    }
+  }, [teachers]);
+
+  const deleteStudent = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/teacher/${selectedId}`);
-      fetchTeacher();
-      setShowModal(false);
+      await axios.delete(`http://localhost:4000/teacher/${id}`);
+      dispatch(fetchTeacher());
     } catch (error) {
-      console.log(error.message);
+      console.error("Error deleting teacher:", error.message);
     }
   };
 
@@ -59,11 +52,9 @@ const HomeTeacher = () => {
     return isInGroup && matchedStudent;
   });
 
-  ///////////////////////////////////////////////////
-
   return (
     <>
-      {error && <h1>{error.message}</h1>}
+      {error && <h1>{error}</h1>}
       {loading ? (
         <div className="loading">
           <div className="lds-ripple">
@@ -75,7 +66,7 @@ const HomeTeacher = () => {
         <div className="home">
           <div className="container">
             <div className="home_head">
-              <span>Teachers' info</span>
+              <span>Teachers info</span>
               <div className="texts_act">
                 <input
                   type="search"
@@ -93,18 +84,10 @@ const HomeTeacher = () => {
               <div className="btn">
                 <Link to="/addTeacher">
                   <Button color="success" variant="contained">
-                    <PersonAddAlt
-                      sx={{
-                        fontSize: "40px",
-                        width: "50px",
-                      }}
-                    />
+                    <PersonAddAlt sx={{ fontSize: "40px", width: "50px" }} />
                   </Button>
                 </Link>
               </div>
-              {/* <div className="btnMode">
-            <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
-          </div> */}
             </div>
             <div className="home_body">
               <div className="body_head">
@@ -118,9 +101,6 @@ const HomeTeacher = () => {
               <div className="body_data">
                 <Teacher
                   students={filteredStudents}
-                  showModal={showModal}
-                  setShowModal={setShowModal}
-                  setSelectedId={setSelectedId}
                   deleteStudent={deleteStudent}
                 />
               </div>

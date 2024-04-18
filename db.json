@@ -10,13 +10,6 @@
       "username": "Baker"
     },
     {
-      "id": "79f4",
-      "firstName": "jonh",
-      "lastName": "Doe",
-      "group": "N45",
-      "age": "37"
-    },
-    {
       "id": "dc4f",
       "firstName": "",
       "lastName": "",
@@ -52,13 +45,6 @@
       "age": "12"
     },
     {
-      "id": "7c89",
-      "firstName": "Black",
-      "lastName": "tetsgs",
-      "group": "N45",
-      "age": 32
-    },
-    {
       "id": "0870",
       "firstName": "Black",
       "lastName": "Edison",
@@ -66,25 +52,11 @@
       "age": 333
     },
     {
-      "id": "89fa",
-      "firstName": "Black",
-      "lastName": "tetsgs",
-      "group": "N50",
-      "age": 22
-    },
-    {
-      "id": "521e",
-      "firstName": "Black",
-      "lastName": "Edison",
-      "group": "N38",
-      "age": 21
-    },
-    {
-      "id": "cd3a",
+      "id": "2ec1",
       "firstName": "Black",
       "lastName": "tetsgs",
       "group": "N45",
-      "age": 21
+      "age": 12
     }
   ],
   "teacher": [
@@ -2271,6 +2243,20 @@
       "lastName": "tetsgs",
       "group": "junior",
       "age": 22
+    },
+    {
+      "id": "71d1",
+      "firstName": "Black",
+      "lastName": "tetsgs",
+      "group": "middle",
+      "age": 21
+    },
+    {
+      "id": "a7d7",
+      "firstName": "Black",
+      "lastName": "tserew3",
+      "group": "middle",
+      "age": 3
     }
   ]
 }
